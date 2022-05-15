@@ -2,7 +2,7 @@
   <footer class="footer">
     <div>
       This Application is made by
-      <span class="names">sakai makoto, ○○○ and ○○○</span>.
+      <span class="names">sakai makoto, tada shouhei and umekawa taisei</span>.
     </div>
     <small
       >The Application is created as a part of the GeekSalon WebExpert
