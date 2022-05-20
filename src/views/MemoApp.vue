@@ -1,38 +1,79 @@
 <template>
-  <h1>Vue メモ</h1>
-  <div class="memo-list">
-    <ul class="memo-list__container">
-      <li class="memo">
-        <div class="memo__checkbox">
-          <input type="checkbox" />
-        </div>
-        <div class="memo__text">ひき肉を300g買う</div>
-        <button class="memo__delete">削除</button>
-      </li>
-      <li class="memo">
-        <div class="memo__checkbox">
-          <input type="checkbox" />
-        </div>
-        <div class="memo__text">ホウレンソウを1束買う</div>
-        <button class="memo__delete">削除</button>
-      </li>
-      <li class="memo">
-        <div class="memo__checkbox">
-          <input type="checkbox" />
-        </div>
-        <div class="memo__text">ピーマンを2個買う</div>
-        <button class="memo__delete">削除</button>
-      </li>
-    </ul>
-    <div class="add-memo-field">
-      <input class="add-memo-field__input" type="text" />
-      <button class="add-memo-field__button">追加</button>
+  <div>
+    <h1>Vue メモ</h1>
+    <div class="memo-list">
+      <ul class="memo-list__container">
+        <li class="memo">
+          <div class="memo__checkbox">
+            <input type="checkbox" />
+          </div>
+          <div class="memo__text">ひき肉を300g買う</div>
+          <button class="memo__delete" v-on:click="deleteItem">削除</button>
+        </li>
+        <li class="memo">
+          <div class="memo__checkbox">
+            <input type="checkbox" />
+          </div>
+          <div class="memo__text">ホウレンソウを1束買う</div>
+          <button class="memo__delete" v-on:click="deleteItem">削除</button>
+        </li>
+        <li class="memo">
+          <div class="memo__checkbox">
+            <input type="checkbox" />
+          </div>
+          <div class="memo__text">ピーマンを2個買う</div>
+          <button class="memo__delete" v-on:click="deleteItem">削除</button>
+        </li>
+      </ul>
+      <div class="add-memo-field">
+        <form>
+          <input class="add-memo-field__input" type="text" v-model="newItem" />
+          <button class="add-memo-field__button" v-on:click="addItem">
+            追加
+          </button>
+        </form>
+        <li v-for="(memo, index) in memos" :key="index">
+          <input type="checkbox" v-model="memo.isDone" />
+          <span v-bind:class="{ done: memo.isDOne }">
+            {{ memo.item }}
+          </span>
+          <!-- indexによってどこのdeleteが消されているのかを取得する -->
+          <button v-on:click="deleteItem(index)">Delete</button>
+        </li>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      newItem: "",
+      todos: [],
+    }
+  },
+  methods: {
+    addItem: function () {
+      //console.log("Clicked!")
+      //未入力状態で追加ボタンを押しても追加されないようにする
+      if (this.newItem === "") return
+
+      let memo = {
+        item: this.newItem,
+        isdone: false,
+      }
+      this.todos.push(memo)
+      this.newItem = ""
+    },
+    deleteItem: function (index) {
+      //   console.log("Delete!")
+      //   console.log(index)
+      //第一引数が削除を始める配列、第二引数が削除する長さ
+      this.memos.splice(index, 1)
+    },
+  },
+}
 </script>
 
 <style scoped>
