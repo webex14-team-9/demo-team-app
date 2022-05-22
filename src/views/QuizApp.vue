@@ -23,7 +23,37 @@
 </template>
 
 <script>
-export default {}
+data() {
+
+  return{
+    quiz:{
+      text: "この星の名前は何でしょう？",
+      image:"Ganymede.jpg",
+      choices:[
+        {
+          text:"ゴリアテ",
+          iscorrect: false,
+          feedback: "残念！ゴリアテは、旧約聖書に登場するダビデに石で殺される巨人だよ。",
+
+          },
+
+        {
+          text:"ゼニガメ",
+          iscorrect: false,
+          feedback:"残念！ゼニガメは、クサガメまたはニホンイシガメの幼体だよ。",
+
+        },
+
+        {
+          text:"ガニメデ",
+          iscorrect: true,
+          feedback:"正解！ガニメデは、木星の第三惑星だよ！",
+
+        },
+      ],
+    },
+   }
+},
 </script>
 
 <style>
