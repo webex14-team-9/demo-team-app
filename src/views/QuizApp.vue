@@ -1,24 +1,24 @@
 <template>
   <h1>Vue クイズ</h1>
   <div class="app">
-    <h2>Q. {{ "クイズタイトル" }}</h2>
+    <h2>Q. {{ quiz.title }}</h2>
     <img
       class="quiz-image"
       src="https://via.placeholder.com/300x300"
       alt="クイズタイトル"
     />
     <div class="container">
-      <button>
-        {{ "選択肢1" }}
+      <button v-for="choice in choices">
+        {{ choice[0].text }}
       </button>
-      <button>
-        {{ "選択肢2" }}
+      <button v-for="choice in choices">
+        {{ choice[1].text }}
       </button>
-      <button>
-        {{ "選択肢3" }}
+      <button v-for="choice in choices">
+        {{ choice[2].text }}
       </button>
     </div>
-    <div>{{ "答え" }}</div>
+    <div>{{ quiz.feedback }}</div>
   </div>
 </template>
 
@@ -26,8 +26,9 @@
 data() {
 
   return{
+    feedback:"",
     quiz:{
-      text: "この星の名前は何でしょう？",
+      title: "この星の名前は何でしょう？",
       image:"Ganymede.jpg",
       choices:[
         {
@@ -54,8 +55,19 @@ data() {
     },
    }
 },
-</script>
 
+methods: {
+ choiceclick = function(choiceNumber) {
+
+   const choice = this.quiz.choices[chiceNumber]
+
+   this.choice.feedback
+
+   },
+
+},
+Vue.createApp(Quiz).mount("#app")
+</script>
 <style>
 .app {
   display: flex;
