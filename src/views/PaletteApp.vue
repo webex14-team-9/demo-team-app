@@ -1,5 +1,5 @@
 <template>
-  <h1>Vue パレット</h1>
+  <h1>Vue palette</h1>
   <div class="app">
     <div
       class="palette"
