@@ -1,73 +1,31 @@
 <template>
   <h1>Vue クイズ</h1>
   <div class="app">
-    <h2>Q. {{ quiz.title }}</h2>
+    <h2>Q. {{ "クイズタイトル" }}</h2>
     <img
       class="quiz-image"
       src="https://via.placeholder.com/300x300"
       alt="クイズタイトル"
     />
     <div class="container">
-      <button v-for="choice in choices">
-        {{ choice[0].text }}
+      <button>
+        {{ "選択肢1" }}
       </button>
-      <button v-for="choice in choices">
-        {{ choice[1].text }}
+      <button>
+        {{ "選択肢2" }}
       </button>
-      <button v-for="choice in choices">
-        {{ choice[2].text }}
+      <button>
+        {{ "選択肢3" }}
       </button>
     </div>
-    <div>{{ quiz.feedback }}</div>
+    <div>{{ "答え" }}</div>
   </div>
 </template>
 
 <script>
-data() {
-
-  return{
-    feedback:"",
-    quiz:{
-      title: "この星の名前は何でしょう？",
-      image:"Ganymede.jpg",
-      choices:[
-        {
-          text:"ゴリアテ",
-          iscorrect: false,
-          feedback: "残念！ゴリアテは、旧約聖書に登場するダビデに石で殺される巨人だよ。",
-
-          },
-
-        {
-          text:"ゼニガメ",
-          iscorrect: false,
-          feedback:"残念！ゼニガメは、クサガメまたはニホンイシガメの幼体だよ。",
-
-        },
-
-        {
-          text:"ガニメデ",
-          iscorrect: true,
-          feedback:"正解！ガニメデは、木星の第三惑星だよ！",
-
-        },
-      ],
-    },
-   }
-},
-
-methods: {
- choiceclick = function(choiceNumber) {
-
-   const choice = this.quiz.choices[chiceNumber]
-
-   this.choice.feedback
-
-   },
-
-},
-Vue.createApp(Quiz).mount("#app")
+export default {}
 </script>
+
 <style>
 .app {
   display: flex;
