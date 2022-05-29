@@ -76,7 +76,7 @@ export default {
 }
 .mini-palette {
   min-width: 60px;
-  height: 60px;
+  height: 59px;
 }
 .colors-container {
   display: flex;
